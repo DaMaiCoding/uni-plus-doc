@@ -2,9 +2,12 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "uniLin",
+  title: "UniLin",
   description: "这是一个非常好用的 uniapp 开发框架",
+  head: [['link', { rel: 'icon', href: '/icon/favicon.ico' }]],
   themeConfig: {
+    logo: '/icon/logo.png',
+    siteTitle: 'UniLin',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '指南', link: '/src/guide/1-introduction' },
@@ -30,7 +33,8 @@ export default defineConfig({
           { text: 'git提交篇', link: '/src/guide/12-git' },
           { text: '权限篇', link: '/src/guide/13-permission' },
           { text: '优化篇', link: '/src/guide/14-optimization' },
-          { text: '常见问题', link: '/src/guide/15-faq' },
+          { text: '规范篇', link: '/src/guide/15-specification' },
+          { text: '常见问题', link: '/src/guide/16-faq' },
         ]
       },
       {
@@ -54,6 +58,19 @@ export default defineConfig({
       { icon: 'gitee', link: 'https://gitee.com/FOM' },
       // 掘金
       { icon: 'juejin', link: 'https://juejin.cn/user/2368772393149325' },
-    ]
+    ],
+
+    search: {
+      provider: 'local'
+    },
+    
+    lastUpdated: {
+      text: '最后更新时间',
+    },
+
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright (c) 2024 艮山'
+    }
   },
 })
