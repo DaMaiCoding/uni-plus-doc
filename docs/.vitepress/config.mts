@@ -72,5 +72,5 @@ export default defineConfig({
       message: 'Released under the MIT License.',
       copyright: 'Copyright (c) 2024 艮山'
     }
-  },
+  }
 })
