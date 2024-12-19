@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitepress'
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: "/uni-lin-doc/",
   title: "UniLin",
@@ -9,7 +8,6 @@ export default defineConfig({
   themeConfig: {
     logo: '/logo.png',
     siteTitle: 'UniLin',
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '指南', link: '/src/guide/1-introduction' },
       { text: '🥤打赏', link: '/src/reward/rewards' },
@@ -76,6 +74,11 @@ export default defineConfig({
     
     lastUpdated: {
       text: '最后更新时间',
+    },
+
+    docFooter: {
+      prev: '上一页',
+      next: '下一页'
     },
 
     footer: {

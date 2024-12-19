@@ -1,11 +1,10 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
   name: "UniLin"
   text: "这是一个 “超超超” 好用的 uniapp 开发框架"
-  tagline: 不仅包含了 uniapp 的所有功能，还提供了请求封装、状态管理、权限校验、国际化、代码校验、组件库库、文档等一整套解决方案
+  tagline: 不仅包含了 uniapp 的所有功能，还提供了请求封装、状态管理、权限校验、国际化、代码校验、组件库、文档等一整套解决方案
   image: 
     src: /logo.png
     alt: UniLin
@@ -41,3 +40,11 @@ features:
     linkText: 赶紧去看看吧
 ---
 
+#
+
+<DataPanel />
+
+<script setup lang="ts">
+// 导入访问数据组件
+import DataPanel from './components/home/DataPanel.vue'
+</script>

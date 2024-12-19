@@ -9,4 +9,6 @@
 
   /* brand 按钮背景色 */
   --vp-button-brand-bg: #30a46c;
+  /* 字体 与 鼠标悬停 颜色 */
+  --vp-c-brand-1: #30a46c;
 }
