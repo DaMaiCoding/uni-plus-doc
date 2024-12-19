@@ -4,7 +4,7 @@ export default defineConfig({
   base: "/uni-lin-doc/",
   title: "UniLin",
   description: "这是一个非常好用的 uniapp 开发框架",
-  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+  head: [['link', { rel: 'icon', href: './favicon.ico' }]],
   themeConfig: {
     logo: '/logo.png',
     siteTitle: 'UniLin',
