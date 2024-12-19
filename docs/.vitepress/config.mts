@@ -24,8 +24,8 @@ export default defineConfig({
       {
         text: '指南',
         items: [
-          { text: '介绍', link: '/src/guide/1-introduction' },
-          { text: '开始入门', link: '/src/guide/2-start' },
+          { text: '简介', link: '/src/guide/1-introduction' },
+          { text: '快速入门', link: '/src/guide/2-start' },
           { text: '样式篇', link: '/src/guide/3-style' },
           { text: '布局篇', link: '/src/guide/4-layout' },
           { text: '图标篇', link: '/src/guide/5-icons' },
@@ -39,7 +39,8 @@ export default defineConfig({
           { text: '权限篇', link: '/src/guide/13-permission' },
           { text: '优化篇', link: '/src/guide/14-optimization' },
           { text: '规范篇', link: '/src/guide/15-specification' },
-          { text: '常见问题', link: '/src/guide/16-faq' },
+          { text: 'cli篇', link: '/src/guide/16-cli' },
+          { text: '常见问题', link: '/src/guide/17-faq' },
         ]
       },
       {
