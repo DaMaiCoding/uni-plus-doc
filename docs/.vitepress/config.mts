@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: "/uni-lin-doc/",
   title: "UniLin",
   description: "这是一个非常好用的 uniapp 开发框架",
   head: [['link', { rel: 'icon', href: '/icon/favicon.ico' }]],
