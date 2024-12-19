@@ -1,12 +1,12 @@
 :root {
   /* 标题 */
   --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%);
+  --vp-home-hero-name-background: linear-gradient( 135deg, #81FBB8 10%, #30a46c 100%);
   
   /* 图标背景 */
-  --vp-home-hero-image-background-image: linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%);
+  --vp-home-hero-image-background-image: linear-gradient( 135deg, #81FBB8 10%, #30a46c 100%);
   --vp-home-hero-image-filter: blur(150px);
 
   /* brand 按钮背景色 */
-  --vp-button-brand-bg: #28C76F;
+  --vp-button-brand-bg: #30a46c;
 }
