@@ -5,15 +5,21 @@ export default defineConfig({
   base: "/uni-lin-doc/",
   title: "UniLin",
   description: "这是一个非常好用的 uniapp 开发框架",
-  head: [['link', { rel: 'icon', href: '/icon/favicon.ico' }]],
+  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
   themeConfig: {
-    logo: '/icon/logo.png',
+    logo: '/logo.png',
     siteTitle: 'UniLin',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '指南', link: '/src/guide/1-introduction' },
       { text: '🥤打赏', link: '/src/reward/rewards' },
-      { text: '周边生态', link: '/src/plug/recommend' }
+      {
+        text: '1.2.0', 
+        items: [
+          { text: '更新日志', link: '/src/plug/recommend' },
+          { text: '参考文献', link: '/src/plug/recommend' }
+        ]
+      }
     ],
 
     sidebar: [
@@ -39,15 +45,18 @@ export default defineConfig({
         ]
       },
       {
-        text: '交流',
+        text: '社交',
         items: [
           { text: '🥤打赏', link: '/src/reward/rewards' },
+          { text: '交流群', link: '/src/reward/rewards' },
         ]
       },
       {
-        text: '周边生态',
+        text: '其他',
         items: [
           { text: '插件推荐', link: '/src/plug/recommend' },
+          { text: '更新日志', link: '/src/plug/recommend' },
+          { text: '参考文献', link: '/src/plug/recommend' },
         ]
       },
     ],
