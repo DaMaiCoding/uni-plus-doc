@@ -12,3 +12,14 @@
   /* 字体 与 鼠标悬停 颜色 */
   --vp-c-brand-1: #30a46c;
 }
+
+/* 缩放图片调整 */
+.medium-zoom-overlay {
+  z-index: 98;
+  opacity: 0.7 !important;
+  background-color: #000 !important;
+}
+
+.medium-zoom-image {
+  z-index: 99;
+}
