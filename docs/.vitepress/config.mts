@@ -1,13 +1,13 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  base: "/uni-lin-doc/",
-  title: "UniLin",
+  base: "/uni-plus-doc/",
+  title: "UniPlus",
   description: "这是一个非常好用的 uniapp 开发框架",
   head: [['link', { rel: 'icon', href: './favicon.ico' }]],
   themeConfig: {
     logo: '/logo.png',
-    siteTitle: 'UniLin',
+    siteTitle: 'UniPlus',
     nav: [
       { text: '指南', link: '/src/guide/1-introduction' },
       { text: '🥤打赏', link: '/src/reward/rewards' },
