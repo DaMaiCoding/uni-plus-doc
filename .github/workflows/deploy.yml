@@ -33,7 +33,7 @@ jobs:
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2 # 安装pnpm并添加到环境变量
+        uses: pnpm/action-setup@v4 # 安装pnpm并添加到环境变量
         with:
           version: 8.6.12 # 指定需要的 pnpm 版本
       - name: Setup Node
@@ -50,10 +50,9 @@ jobs:
           pnpm docs:build
           touch .nojekyll
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2 # 上传构建文件
+        uses: actions/upload-pages-artifact@v2
         with:
-          # 设置部署分支
-          path: docs/.vitepress/dist # 上传的文件夹
+          path: docs/.vitepress/dist
 
   # 部署工作
   deploy:
@@ -67,4 +66,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-
