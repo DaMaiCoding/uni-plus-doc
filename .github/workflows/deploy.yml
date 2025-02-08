@@ -50,9 +50,10 @@ jobs:
           pnpm docs:build
           touch .nojekyll
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v2 # 上传构建文件
         with:
-          path: docs/.vitepress/dist
+          # 设置部署分支
+          path: docs/.vitepress/dist # 上传的文件夹
 
   # 部署工作
   deploy:
@@ -65,7 +66,5 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: docs/.vitepress/dist
+        uses: actions/deploy-pages@v2
+
