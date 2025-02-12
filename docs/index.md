@@ -2,22 +2,22 @@
 layout: home
 
 hero:
-  name: "UniPlus"
+  name: "uni-plus"
   text: "这是一个 “超超超” 好用的 uniapp 开发框架"
   tagline: 不仅包含了 uniapp 的所有功能，还提供了请求封装、状态管理、权限校验、国际化、代码校验、组件库、文档等一整套解决方案
   image: 
     src: /logo.png
-    alt: UniPlus
+    alt: uni-plus
   actions:
     - theme: brand
       text: 起步 🚀
       link: /src/guide/1-introduction
     - theme: alt
       text: 项目地址 🗳️
-      link: https://github.com/Jackie-Lin
+      link: https://github.com/DaMaiCoding/uni-plus
     - theme: alt
       text: 演示地址 🔗
-      link: https://github.com/Jackie-Lin
+      link: https://damaicoding.github.io/uni-plus/#/
     - theme: alt
       text: 常见问题 🔍
       link: /src/guide/15-faq

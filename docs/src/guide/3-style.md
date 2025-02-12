@@ -68,7 +68,7 @@
 我们的项目是根据 `uniapp` 最初始的官方 `cli` 脚手架模板生成，并且我们的项目要支持 `Vue3 + ts`，所以执行的命令如下
 
 ```shell
-npx degit dcloudio/uni-preset-vue#vite-ts uni-lin
+npx degit dcloudio/uni-preset-vue#vite-ts uni-plus
 ```
 
 `uniapp` 官方链接：[点击跳转 - quickstart-cli](https://uniapp.dcloud.net.cn/quickstart-cli.html)

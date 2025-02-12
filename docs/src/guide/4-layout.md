@@ -185,6 +185,7 @@ export default defineUniPages({
 <!-- 使用 type="home" 属性设置首页 -->
 <route type="home" lang="json5">
 {
+  "layout": "default", // 使用默认布局
   "style": { 
     "navigationBarTitleText": "index" 
    }
@@ -196,11 +197,13 @@ export default defineUniPages({
 
 推荐 `JSON5`，因为使用这个, 能更好的格式化，`vscode` 不会出现一些语法警告提示
 
+`@uni-helper/vite-plugin-uni-pages` 除了优化路由配置外还可以，优化分包配置，具体详情可以看 **优化篇**
+
 你想要了解更多语法可以到官方文档看看 [@uni-helper/vite-plugin-uni-pages 官方文档](https://github.com/uni-helper/vite-plugin-uni-pages)
 
 你可能会有这样的疑问，我搞了这么多配置，就是只是为了在 `.vue` 中写路由配置，感觉增加了好多学习成本啊
 
-你可以看到 `pages.config.ts` 他是一个 ts 文件，那么他就是有相关的类型定义，这就方便我们阅读和修改代码配置了
+你可以看到 `pages.config.ts` 他是一个 `ts` 文件，那么他就是有相关的类型定义，这就方便我们阅读和修改代码配置了
 
 ![image-20241225144752681](./assets/4-Layout篇/image-20241225144752681.png) 
 

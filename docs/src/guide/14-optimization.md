@@ -1,10 +1,101 @@
 # 14-优化篇
 
-## 分包
+## 分包优化
 
-## 网络图片替换本地图片
+困于微信小程序限制，包的大小被限制在 2M，而我们的项目文件打包后超出了这个限制大小
 
-通常我们使用 uniapp 开发微信小程序的时候，因为文件太大导致无法上传，即使分包了，还是太多很大一部分原因是本地图片/图标太大
+为了解决这个问题，微信小程序也提出分包的解决方案，但是需要遵循下面的规则（[微信官方规则](https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages/basic.html)）
+
+### 打包原则
+
+- 声明 `subPackages` 后，将按 `subPackages` 配置路径进行打包，`subPackages` 配置路径外的目录将被打包到主包中
+- 主包也可以有自己的 `pages`，即最外层的 pages 字段。
+- `subPackages` 的根目录不能是另外一个 `subPackages` 内的子目录
+- `tabBar` 页面必须在主包内
+
+### 引用原则
+
+- `pages-sub-A` 无法 require `pages-sub-B` JS 文件，但可以 require 主包、`pages-sub-A` 内的 JS 文件；使用 [分包异步化](https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages/async.html) 时不受此条限制
+- `pages-sub-A` 无法 import `pages-sub-B` 的 template，但可以 require 主包、`pages-sub-A` 内的 `template`
+- `pages-sub-A` 无法使用 `pages-sub-B` 的资源，但可以使用主包、`pages-sub-A` 内的资源
+
+通常我们很多情况，并不是一开始就把分包定好的，而是开发一定阶段时，确实已经项目很大才会去分包的，所以在这种情况下
+
+如果我们采用 `uniapp` 官方的方案，我们需要去创建分包文件夹、再去配置 `manifest.json` ，这是网上大多数的解决方案，随便一搜索就有
+
+这里，我们才有一种新的方案进行实现，先安装一个插件 [uni-helper/vite-plugin-uni-pages](https://github.com/uni-helper/vite-plugin-uni-pages)
+
+```shell
+pnpm i @uni-helper/vite-plugin-uni-pages -D
+```
+
+我们现在需要建立一个分包，那么我在 `src` 目录下建立一个 `pages-sub` 文件夹，当然如果你想要继续分包，可以再建立 `pages-sub-2、pages-sub-3` ...
+
+然后把需要分包的页面放入分包文件夹（不能是 `tabBar` 页面），如果有跳转链接需要替换成分包的路径
+
+![image-20250106141844065](./assets/14-优化篇/image-20250106141844065.png) 
+
+然后在 `vite.config.ts` 中配置一下
+
+```json
+import { defineConfig } from "vite";
+import uni from "@dcloudio/vite-plugin-uni";
+import UniPages from '@uni-helper/vite-plugin-uni-pages'
+
+export default defineConfig({
+  plugins: [
+    UniPages({
+      exclude: ['**/components/**/**.*'], // 排除的文件
+      routeBlockLang: 'json5', // 虽然设了默认值，但是vue文件还是要加上 lang="json5", 这样才能很好地格式化
+      // homePage 通过 vue 文件的 route-block 的type="home"来设定
+      // pages 目录为 src/pages，分包目录不能配置在pages目录下
+      subPackages: ['src/pages-sub'], // 是个数组，可以配置多个，但是不能为pages里面的目录
+      dts: 'src/types/uni-pages.d.ts', // 生成的类型文件，默认是 src/types/uni-pages.d.ts
+    }),
+    uni()
+  ],
+});
+```
+
+需要注意 2 点
+
+1. 默认 `src/pages` 里面的 `vue` 文件都会生成一个页面，如果不需要生成页面可以在 `exclude` 配置中排除
+2. 设置分包，可以在 `subPackages` 中加入分包文件夹路径，注意分包的目录不能为 `src/pages` 里面的子目录，并且不能是 `tabbar` 页面
+
+设置主页，我们可以采用这样的写法，如果不是主页，不写 `type` 或者为 `page` 即可
+
+```vue
+<!-- 使用 type="home" 属性设置首页，其他页面不需要设置，默认为page -->
+<!-- 推荐使用json5，更强大，且允许注释 -->
+<route lang="json5" type="home">
+{
+  style: {
+    navigationStyle: 'custom',
+    navigationBarTitleText: '首页',
+  },
+}
+</route>
+
+<template>
+  <div>
+    <h1>主页</h1>
+  </div>
+</template>
+```
+
+除了分包的功能，还可以与 [@uni-helper/vite-plugin-uni-layouts](https://uni-helper.js.org/vite-plugin-uni-layouts) 配合实现类似 `Nuxt` 的 `layouts` 系统，具体详情看本专栏的 **Layout篇**
+
+虽然我们只列举了微信小程序的做法，但是不止微信小程序可以做分包优化，QQ 小程序、百度小程序 ... 都可以做[分包优化](https://uniapp.dcloud.net.cn/collocation/manifest.html#关于分包优化的说明)
+
+> PS: 如果你想了解更多 `uni-helper/vite-plugin-uni-pages` 的用法可以看 [这里](https://github.com/uni-helper/vite-plugin-uni-pages)
+
+## 上传优化
+
+> 【注意】这个优化只针对 **微信小程序上传** 进行的优化
+
+**如何使用网络图片替换本地图片？**
+
+通常我们使用 `uniapp` 开发微信小程序的时候，因为文件太大导致无法上传，即使分包了，还是太多很大一部分原因是本地图片/图标太大
 
 对此，我们需要把图片/图标放到服务器上，然后通过网络图片/图标的形式进行引入
 
@@ -92,3 +183,72 @@ export default defineManifestConfig({
 ![image-20241225102403718](./assets/14-优化篇/image-20241225102403718.png)
 
 点击上传后，可以看到上传时 `static/img` 文件夹下的文件都被忽略了，完美 😎
+
+## 导入优化
+
+```typescript
+import { ref } from 'vue'
+const name = ref('name')
+```
+
+每次编写响应式数据的时候都得引入 ref 就很麻烦有没有什么办法，就是不用写导入，就直接能用了
+
+那就得使用 `unplugin-auto-import` 了
+
+```shell
+pnpm add unplugin-auto-import -D
+```
+
+使用这个也很简单，需要在 `vite.config.ts` 配置下
+
+```typescript
+import { defineConfig } from 'vite'
+import uni from '@dcloudio/vite-plugin-uni'
+import AutoImport from 'unplugin-auto-import/vite'
+
+export default defineConfig({
+  plugins: [
+    AutoImport({
+      imports: ['vue', 'uni-app'],
+      dts: 'src/types/auto-import.d.ts',
+      dirs: ['src/hooks'], // 自动导入 hooks
+      eslintrc: { enabled: true },
+      vueTemplate: true // default false
+    }),
+    uni()
+  ]
+})
+```
+
+配置好了，我们重启下，然后只要其他文件保存了有需要导入，就会自动生成 `auto-import.d.ts` 文件
+
+![image-20250109163927427](./assets/14-优化篇/image-20250109163927427.png) 
+
+【注意】如果还是没有自动生成这个文件就自己建一个
+
+还有一个问题，我们这样写并且运行是没问题了，但是提交时，`eslint` 校验不通过啊~
+
+再配置一下，`eslint.config.mjs`
+
+需要注意，这是 `eslint V9` 以上的版本的写法用扁平化写法，与旧版本有很大差别，旧版本的配置就不写了，网上一搜索很多
+
+```typescript
+// eslint.config.mjs
+
+import { readFile } from 'node:fs/promises'
+
+const autoImportFile = new URL('./.eslintrc-auto-import.json', import.meta.url)
+const autoImportGlobals = JSON.parse(await readFile(autoImportFile, 'utf8'))
+
+const config = [
+  {
+    languageOptions: {
+      globals: {
+        ...autoImportGlobals.globals
+      }
+    }
+  }
+]
+
+export default config
+```

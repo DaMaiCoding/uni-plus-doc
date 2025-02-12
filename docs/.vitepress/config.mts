@@ -2,12 +2,12 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   base: "/uni-plus-doc/",
-  title: "UniPlus",
+  title: "uni-plus",
   description: "这是一个非常好用的 uniapp 开发框架",
   head: [['link', { rel: 'icon', href: './favicon.ico' }]],
   themeConfig: {
     logo: '/logo.png',
-    siteTitle: 'UniPlus',
+    siteTitle: 'uni-plus',
     nav: [
       { text: '指南', link: '/src/guide/1-introduction' },
       { text: '🥤打赏', link: '/src/reward/rewards' },
@@ -31,11 +31,11 @@ export default defineConfig({
           { text: '5-图标篇', link: '/src/guide/5-icons' },
           { text: '6-目录结构篇', link: '/src/guide/6-structure' },
           { text: '7-UI库篇', link: '/src/guide/7-ui' },
-          { text: '8-请求篇', link: '/src/guide/8-request' },
-          { text: '9-状态篇', link: '/src/guide/9-state' },
-          { text: '10-多语言篇', link: '/src/guide/10-i18n' },
-          { text: '11-构建篇', link: '/src/guide/11-build' },
-          { text: '12-规范篇', link: '/src/guide/12-specification' },
+          { text: '8-状态篇', link: '/src/guide/8-state' },
+          { text: '9-请求篇', link: '/src/guide/9-request' },
+          { text: '10-i18n篇', link: '/src/guide/10-i18n' },
+          { text: '11-Specification篇', link: '/src/guide/11-specification' },
+          { text: '12-规范篇', link: '/src/guide/12-standard' },
           { text: '13-Git提交篇', link: '/src/guide/13-git' },
           { text: '14-优化篇', link: '/src/guide/14-optimization' },
           { text: '15-权限篇', link: '/src/guide/15-permission' },
@@ -43,7 +43,8 @@ export default defineConfig({
           { text: '17-Echarts篇', link: '/src/guide/17-echarts' },
           { text: '18-AI辅助开发篇', link: '/src/guide/18-AI' },
           { text: '19-分支管理篇', link: '/src/guide/19-flow' },
-          { text: '20-常见问题', link: '/src/guide/20-faq' },
+          { text: '20-项目实战篇', link: '/src/guide/20-project' },
+          { text: '21-常见问题', link: '/src/guide/21-faq' },
         ]
       },
       {
