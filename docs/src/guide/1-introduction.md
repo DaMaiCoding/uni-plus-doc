@@ -34,7 +34,7 @@
 
 Github Star History 实时地址：<https://star-history.com/#DaMaiCoding/uni-plus&Date>
 
-![star-history-2025212](./assets/1-简介/star-history-2025212.png)
+![Star History Chart](https://api.star-history.com/svg?repos=DaMaiCoding/uni-plus&type=Date)
 
 ## 🎯 生成过程
 

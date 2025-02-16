@@ -6,14 +6,14 @@
 
 为了解决这个问题，微信小程序也提出分包的解决方案，但是需要遵循下面的规则（[微信官方规则](https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages/basic.html)）
 
-### 打包原则
+**打包原则**
 
 - 声明 `subPackages` 后，将按 `subPackages` 配置路径进行打包，`subPackages` 配置路径外的目录将被打包到主包中
 - 主包也可以有自己的 `pages`，即最外层的 pages 字段。
 - `subPackages` 的根目录不能是另外一个 `subPackages` 内的子目录
 - `tabBar` 页面必须在主包内
 
-### 引用原则
+**引用原则**
 
 - `pages-sub-A` 无法 require `pages-sub-B` JS 文件，但可以 require 主包、`pages-sub-A` 内的 JS 文件；使用 [分包异步化](https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages/async.html) 时不受此条限制
 - `pages-sub-A` 无法 import `pages-sub-B` 的 template，但可以 require 主包、`pages-sub-A` 内的 `template`
@@ -252,3 +252,43 @@ const config = [
 
 export default config
 ```
+
+## 调试优化
+
+通常我们调试 `APP` (安卓) 都是使用 `USB` 线连接调试太麻烦了
+
+从 `Android 11` 开始[USB调试](https://so.csdn.net/so/search?q=USB调试&spm=1001.2101.3001.7020)新增了无线调试功能，需要搭配 `adb 30.0.0` 及以上版本使用，请确认你的系统和 [adb](https://so.csdn.net/so/search?q=adb&spm=1001.2101.3001.7020) 是否符合要求
+
+`adb` 最新版本下载入口： [SDK Platform Tools版本说明](https://developer.android.google.cn/studio/releases/platform-tools)
+
+下面以 **红米K40** 为例，快速点击 OS 版本，进入开发者模式
+
+<img src="./assets/14-优化篇/2ebdb72a81aa092017badca1c15cb06.jpg" alt="2ebdb72a81aa092017badca1c15cb06" style="zoom:33%;" /> 
+
+保证手机和电脑在同一局域网的情况下，进入开发者选项开启 `USB` 无线调试。
+
+<img src="./assets/14-优化篇/aa538b26d30506721322a5cc4dd4179.jpg" alt="aa538b26d30506721322a5cc4dd4179" style="zoom:33%;" /> 
+
+<img src="./assets/14-优化篇/5caec34a5a20da1935ad24b9e3edf6c.jpg" alt="5caec34a5a20da1935ad24b9e3edf6c" style="zoom:33%;" /> 
+
+开启之后点击无线调试，可以看到 [Android](https://so.csdn.net/so/search?q=Android&spm=1001.2101.3001.7020) 设备无线调试所使用的 `IP` 和 端口 
+
+<img src="./assets/14-优化篇/image-20250216153930013.png" alt="image-20250216153930013" style="zoom:33%;" /> 
+
+然后，我们把将之前下载好的 `platform-toos` 文件夹移动到 `HBuilderX` 提供的adb目录下：
+
+![image-20250216155739346](./assets/14-优化篇/image-20250216155739346.png)
+
+并重命名为 33.0.1，并打开 CMD 窗口
+
+![image-20250216153739855](./assets/14-优化篇/image-20250216153739855.png)
+
+`adb pair` 连接弹窗中的 `IP` 与 端口号，注意 `pairing code` 就是配对码
+
+`adb connect` 连接非弹框中的 `IP` 与 端口号
+
+`adb devices` 用于查看已连接设备
+
+![image-20250216160900666](./assets/14-优化篇/image-20250216160900666.png) 
+
+选择这个 `IP + 端口` 的调试即可
