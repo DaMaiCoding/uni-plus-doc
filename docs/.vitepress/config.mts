@@ -66,9 +66,9 @@ export default defineConfig({
 
     socialLinks: [
       // GitHub
-      { icon: 'github', link: 'https://github.com/Jackie-Lin' },
+      { icon: 'github', link: 'https://github.com/DaMaiCoding/uni-plus' },
       // Gitee
-      { icon: 'gitee', link: 'https://gitee.com/FOM' },
+      { icon: 'gitee', link: 'https://gitee.com/DaMaiCoding/uni-plus' },
       // 掘金
       { icon: 'juejin', link: 'https://juejin.cn/user/2368772393149325' },
     ],
