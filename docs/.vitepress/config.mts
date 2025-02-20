@@ -50,16 +50,16 @@ export default defineConfig({
       {
         text: '社交',
         items: [
-          { text: '🥤打赏', link: '/src/reward/rewards' },
-          { text: '交流群', link: '/src/reward/rewards' },
+          { text: '🥤打赏', link: '/src/social/rewards' },
+          { text: '交流群', link: '/src/social/communication' },
         ]
       },
       {
         text: '其他',
         items: [
           { text: '插件推荐', link: '/src/plug/recommend' },
-          { text: '更新日志', link: '/src/plug/recommend' },
-          { text: '参考文献', link: '/src/plug/recommend' },
+          { text: '更新日志', link: 'https://github.com/DaMaiCoding/uni-plus/blob/master/CHANGELOG.md' },
+          { text: '我的博客', link: 'https://damaicoding.github.io/Lin-Note-v3' },
         ]
       },
     ],
@@ -88,7 +88,7 @@ export default defineConfig({
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright (c) 2024 艮山'
+      copyright: 'Copyright (c) 2025 大麦大麦'
     }
   }
 })

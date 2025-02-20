@@ -36,7 +36,7 @@ features:
   - title: 精心配置的代码规范
     icon: 📝
     details: TypeScript、ESLint、Prettier、Stylelint、Husky、Lint-staged、commitLint 配置规范
-    link: /src/guide/15-specification
+    link: /src/guide/12-standard
     linkText: 赶紧去看看吧
 ---
 
