@@ -14,8 +14,8 @@ export default defineConfig({
       {
         text: '1.2.0', 
         items: [
-          { text: '更新日志', link: '/src/plug/recommend' },
-          { text: '参考文献', link: '/src/plug/recommend' }
+          { text: '更新日志', link: 'https://github.com/DaMaiCoding/uni-plus/blob/master/CHANGELOG.md' },
+          { text: '我的博客', link: 'https://damaicoding.github.io/DaMaiCoding-Note' },
         ]
       }
     ],
@@ -59,7 +59,7 @@ export default defineConfig({
         items: [
           { text: '插件推荐', link: '/src/plug/recommend' },
           { text: '更新日志', link: 'https://github.com/DaMaiCoding/uni-plus/blob/master/CHANGELOG.md' },
-          { text: '我的博客', link: 'https://damaicoding.github.io/Lin-Note-v3' },
+          { text: '我的博客', link: 'https://damaicoding.github.io/DaMaiCoding-Note' },
         ]
       },
     ],
