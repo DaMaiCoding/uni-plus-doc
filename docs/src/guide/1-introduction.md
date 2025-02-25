@@ -4,7 +4,7 @@
 
 <span style="margin-right: 10px">
 
-[![GitHub Repo stars](https://img.shields.io/github/stars/DaMaiCoding/uni-plus-doc?style=flat&logo=github)](https://github.com/DaMaiCoding/uni-plus-doc)
+[![GitHub Repo stars](https://img.shields.io/github/stars/DaMaiCoding/uni-plus?style=flat&logo=github)](https://github.com/DaMaiCoding/uni-plus-doc)
 
 </span>
 
