@@ -12,7 +12,7 @@ export default defineConfig({
       { text: '指南', link: '/src/guide/1-introduction' },
       { text: '🥤打赏', link: '/src/reward/rewards' },
       {
-        text: '1.2.0', 
+        text: '1.2.2', 
         items: [
           { text: '更新日志', link: 'https://github.com/DaMaiCoding/uni-plus/blob/master/CHANGELOG.md' },
           { text: '我的博客', link: 'https://damaicoding.github.io/DaMaiCoding-Note' },
@@ -44,7 +44,8 @@ export default defineConfig({
           { text: '18-AI辅助开发篇', link: '/src/guide/18-AI' },
           { text: '19-分支管理篇', link: '/src/guide/19-flow' },
           { text: '20-项目实战篇', link: '/src/guide/20-project' },
-          { text: '21-常见问题', link: '/src/guide/21-faq' },
+          { text: '21-图片管理篇', link: '/src/guide/21-img' },
+          { text: '22-常见问题', link: '/src/guide/22-faq' },
         ]
       },
       {
